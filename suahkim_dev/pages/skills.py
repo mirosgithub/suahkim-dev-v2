@@ -1,0 +1,56 @@
+import reflex as rx
+from ..ui.section import section
+from ..ui.skill_category_card import skill_category_card
+
+
+def skills_section() -> rx.Component:
+    skill_categories = [
+        {
+            "category": "Languages",
+            "skills": [
+                {"name": "Python", "level": 90},
+                {"name": "Java", "level": 60},
+                {"name": "C", "level": 30},
+                {"name": "Bash", "level": 80},
+            ],
+        },
+        {
+            "category": "Frameworks",
+            "skills": [
+                {"name": "Docker", "level": 60},
+                {"name": "Google Cloud", "level": 70},
+                {"name": "Git", "level": 90},
+                {"name": "Terminal", "level": 80},
+            ],
+        },
+    ]
+    
+    category_cards = [
+        skill_category_card(
+            category=cat["category"],
+            skills=cat["skills"],
+        )
+        for cat in skill_categories
+    ]
+    
+    content = rx.vstack(
+        rx.grid(
+            *category_cards,
+            columns="2",
+            spacing="8",
+            width="100%",
+            style={"maxWidth": "72rem"},
+        ),
+        spacing="8",
+        align="center",
+        justify="center",
+        width="100%",
+    )
+    
+    return section(
+        content,
+        section_id="skills",
+        title="Skills",
+        subtitle="Subheading",
+    )
+
