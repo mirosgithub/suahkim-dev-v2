@@ -1,7 +1,7 @@
 import reflex as rx
 
 from .ui.base import base_page
-from .pages import hero, experiences, projects, skills, contact
+from .pages import hero, experiences, projects, skills, connect
 
 
 def index() -> rx.Component:
@@ -10,7 +10,7 @@ def index() -> rx.Component:
         experiences.experiences_section(),
         projects.projects_section(),
         skills.skills_section(),
-        contact.contact_section(),
+        connect.connect_section(),
         spacing="0",
         width="100%",
         position="relative",

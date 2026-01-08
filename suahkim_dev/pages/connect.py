@@ -1,11 +1,11 @@
 import reflex as rx
 from ..ui.section import section
-from ..ui.contact import contact_link
+from ..ui.connect import connect_link
 from ..ui.styles import CLASS_NAMES
 
 
-def contact_section() -> rx.Component:
-    contacts = [
+def connect_section() -> rx.Component:
+    connections = [
         {
             "icon": "/linkedin.svg",
             "title": "LinkedIn",
@@ -20,32 +20,25 @@ def contact_section() -> rx.Component:
         },
     ]
     
-    contact_links = [
-        contact_link(
-            icon_path=contact["icon"],
-            title=contact["title"],
-            username=contact["username"],
-            href=contact["href"],
+    connect_links = [
+        connect_link(
+            icon_path=connection["icon"],
+            title=connection["title"],
+            username=connection["username"],
+            href=connection["href"],
         )
-        for contact in contacts
+        for connection in connections
     ]
     
     content = rx.vstack(
-        rx.desktop_only(
-            rx.hstack(
-                *contact_links,
-                spacing="6",
-                width="100%",
-                style={"maxWidth": "48rem"},
-            ),
-        ),
-        rx.mobile_and_tablet(
-            rx.vstack(
-                *contact_links,
-                spacing="6",
-                width="100%",
-                style={"maxWidth": "32rem"},
-            ),
+        rx.flex(
+            *connect_links,
+            spacing="6",
+            wrap="wrap",
+            justify="center",
+            align="center",
+            width="100%",
+            style={"maxWidth": "64rem"},
         ),
         rx.text(
             "© 2026 Suah Kim.",
@@ -60,7 +53,7 @@ def contact_section() -> rx.Component:
     
     return section(
         content,
-        section_id="contact",
+        section_id="connect",
         title="Connect",
         subtitle="Explore my work and get in touch",
     )

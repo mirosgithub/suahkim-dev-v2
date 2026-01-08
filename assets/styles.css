@@ -413,22 +413,22 @@ button[class*="MenuItem"] {
 /* ============================================
    Connect Icons
    ============================================ */
-.contact-icon {
+.connect-icon {
   filter: brightness(0) saturate(100%);
   opacity: 0.7;
   transition: opacity 0.2s ease;
 }
 
-.contact-icon:hover {
+.connect-icon:hover {
   opacity: 1;
 }
 
-.dark .contact-icon {
+.dark .connect-icon {
   filter: brightness(0) saturate(100%) invert(1);
   opacity: 0.8;
 }
 
-.dark .contact-icon:hover {
+.dark .connect-icon:hover {
   opacity: 1;
 }
 

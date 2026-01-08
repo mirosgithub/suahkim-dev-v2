@@ -1,11 +1,11 @@
-"""Reusable contact link component."""
+"""Reusable connect link component."""
 
 import reflex as rx
 from .card import glass_card
 from .styles import CLASS_NAMES
 
 
-def contact_link(
+def connect_link(
     icon_path: str,
     title: str,
     username: str,
@@ -13,7 +13,7 @@ def contact_link(
     icon_size: int = 32,
     **kwargs
 ) -> rx.Component:
-    """Create a contact link card with icon, title, and username.
+    """Create a connect link card with icon, title, and username.
     
     Args:
         icon_path: Path to the icon image (e.g., "/github.svg", "/linkedin.svg")
@@ -28,7 +28,7 @@ def contact_link(
             src=icon_path,
             width=f"{icon_size}px",
             height=f"{icon_size}px",
-            class_name="contact-icon mb-2",
+            class_name="connect-icon mb-2",
         ),
         rx.heading(
             title,
@@ -49,9 +49,10 @@ def contact_link(
             content,
             padding="p-8",
             width="100%",
+            style={"minWidth": "320px", "maxWidth": "380px"},
         ),
         href=href,
         class_name="text-center",
-        style={"textDecoration": "none", "width": "100%"},
+        style={"textDecoration": "none"},
         **kwargs
     )
