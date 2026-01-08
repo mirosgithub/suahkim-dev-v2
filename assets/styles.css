@@ -1,0 +1,441 @@
+@import url("https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Tourney:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* ============================================
+   CSS Variables - Light Theme
+   ============================================ */
+:root {
+  /* Typography */
+  --font-family: "Quantico", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; /* Quantico, Tourney */
+  --font-body: var(--font-family);
+  --font-heading: var(--font-family);
+  
+  /* Colors - Text */
+  --text-primary: #1f2937;
+  --text-secondary: #374151;
+  --text-tertiary: #6b7280;
+  
+  /* Colors - Backgrounds */
+  --bg-glass-light: rgba(255, 255, 255, 0.4);
+  --bg-glass-dark: rgba(40, 40, 45, 0.4);
+  --bg-glass-menu: rgba(255, 255, 255, 0.15);
+  --bg-glass-menu-hover: rgba(255, 255, 255, 0.1);
+  --bg-button: rgba(255, 255, 255, 0.4);
+  --bg-button-hover: rgba(255, 255, 255, 0.6);
+  --bg-transparent: transparent;
+  
+  /* Colors - Borders */
+  --border-glass-light: rgba(255, 255, 255, 0.5);
+  --border-glass-dark: rgba(60, 60, 65, 0.5);
+  --border-button: rgba(255, 255, 255, 0.5);
+  --border-button-hover: rgba(255, 255, 255, 0.6);
+  
+  /* Colors - Shadows */
+  --shadow-glass: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-glass-dark: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  --shadow-button: 0 4px 16px 0 rgba(31, 38, 135, 0.3);
+  --shadow-button-hover: 0 6px 20px 0 rgba(31, 38, 135, 0.4);
+  --shadow-tag: 0 2px 8px 0 rgba(31, 38, 135, 0.2);
+  --shadow-menu: 0 8px 32px 0 rgba(31, 38, 135, 0.4);
+  
+  /* Button Colors */
+  --accent: #DD93C2;
+  --accent-foreground: #ffffff;
+  --primary: #E7ACD0;
+  --primary-foreground: #ffffff;
+  
+  /* Glass Effect */
+  --glass-blur: blur(24px);
+  --glass-blur-small: blur(12px);
+  --glass-blur-tag: blur(4px);
+  --glass-radius: 32px;
+  --glass-radius-small: 0.75rem;
+}
+
+/* ============================================
+   CSS Variables - Dark Theme
+   ============================================ */
+.dark {
+  /* Typography */
+  --font-body: var(--font-family);
+  --font-heading: var(--font-family);
+  
+  /* Colors - Text */
+  --text-primary: rgba(243, 244, 246, 1);
+  --text-secondary: rgba(243, 244, 246, 1);
+  --text-tertiary: rgba(156, 163, 175, 1);
+  
+  /* Colors - Backgrounds */
+  --bg-glass-light: rgba(40, 40, 45, 0.3);
+  --bg-glass-dark: rgba(40, 40, 45, 0.4);
+  --bg-glass-menu: rgba(255, 255, 255, 0.05);
+  --bg-glass-menu-hover: rgba(255, 255, 255, 0.08);
+  --bg-button: rgba(17, 24, 39, 0.4);
+  --bg-button-hover: rgba(17, 24, 39, 0.6);
+  
+  /* Colors - Borders */
+  --border-glass-light: rgba(60, 60, 65, 0.5);
+  --border-glass-dark: rgba(60, 60, 65, 0.5);
+  --border-button: rgba(55, 65, 81, 0.5);
+  --border-button-hover: rgba(55, 65, 81, 0.6);
+  
+  /* Colors - Shadows */
+  --shadow-glass: var(--shadow-glass-dark);
+  --shadow-button: 0 4px 16px 0 rgba(0, 0, 0, 0.3);
+  --shadow-button-hover: 0 6px 20px 0 rgba(0, 0, 0, 0.4);
+  --shadow-tag: 0 2px 8px 0 rgba(0, 0, 0, 0.3);
+  --shadow-menu: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  
+  /* Button Colors */
+  --accent: #E7ACD0;
+  --accent-foreground: #343434;
+  --primary: #DD93C2;
+  --primary-foreground: #343434;
+}
+
+/* ============================================
+   Base Typography
+   ============================================ */
+html,
+body {
+  font-family: var(--font-family);
+  color: var(--text-primary);
+}
+
+h1, h2, h3, h4, h5, h6, p, span, div, a, button, input, textarea, select, label {
+  font-family: var(--font-family);
+  color: var(--text-primary);
+}
+
+a {
+  color: var(--text-secondary);
+}
+
+svg {
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   Buttons
+   ============================================ */
+button {
+  background: var(--bg-button);
+  backdrop-filter: var(--glass-blur-small);
+  -webkit-backdrop-filter: var(--glass-blur-small);
+  border: 1px solid var(--border-button);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-button);
+}
+
+button:active {
+  opacity: 0.9;
+}
+
+/* ============================================
+   Liquid Glass Effects
+   ============================================ */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes floatBG {
+  0%, 100% {
+    background-position: center center;
+  }
+  25% {
+    background-position: 30% 70%;
+  }
+  50% {
+    background-position: 70% 30%;
+  }
+  75% {
+    background-position: 40% 60%;
+  }
+}
+
+.animate-float-bg {
+  animation: floatBG 15s ease-in-out infinite;
+  background-size: 200% 200%;
+}
+
+/* Base glass class */
+.liquid-glass {
+  background: var(--bg-glass-light);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-glass-light);
+  box-shadow: var(--shadow-glass);
+  border-radius: var(--glass-radius);
+}
+
+/* Glass navbar - needs higher specificity */
+.glass-navbar {
+  background: var(--bg-glass-light);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-glass-light);
+  box-shadow: var(--shadow-glass);
+  border-radius: 9999px;
+}
+
+.dark .glass-navbar {
+  background: var(--bg-glass-menu);
+  border: 1px solid var(--border-glass-light);
+  box-shadow: var(--shadow-menu);
+}
+
+.glass-navbar img {
+  object-fit: contain;
+}
+
+@media (min-width: 769px) {
+  .glass-navbar img {
+    max-width: 2.5rem;
+    max-height: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .glass-navbar img {
+    width: 1.75rem;
+    height: 1.75rem;
+    max-width: 1.75rem;
+    max-height: 1.75rem;
+  }
+}
+
+/* ============================================
+   Navigation Components
+   ============================================ */
+.menu-trigger-mobile {
+  background: var(--bg-transparent);
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.menu-icon-navbar {
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.menu-icon-navbar:hover {
+  opacity: 0.7;
+}
+
+.theme-toggle-icon-button {
+  background: var(--bg-transparent) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  cursor: pointer;
+  width: auto !important;
+  height: auto !important;
+  min-width: auto !important;
+  min-height: auto !important;
+}
+
+.theme-toggle-icon-button svg {
+  color: var(--text-primary);
+  width: 24px;
+  height: 24px;
+}
+
+.theme-toggle-icon-button:hover {
+  background: var(--bg-transparent) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  opacity: 0.7;
+  transform: none !important;
+}
+
+.mobile-menu-text {
+  color: var(--text-primary);
+}
+
+/* ============================================
+   Project Components
+   ============================================ */
+.project-tag {
+  box-shadow: var(--shadow-tag);
+  border: 1px solid var(--border-glass-light);
+  backdrop-filter: var(--glass-blur-tag);
+  -webkit-backdrop-filter: var(--glass-blur-tag);
+  white-space: nowrap;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+.dark .project-tag {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-title,
+.project-category,
+.project-description {
+  word-break: normal;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.project-title {
+  font-size: clamp(0.875rem, 3vw, 1.5rem);
+  line-height: 1.3;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+@media (max-width: 375px) {
+  .project-title {
+    font-size: clamp(0.75rem, 4vw, 1.25rem);
+  }
+}
+
+/* ============================================
+   Hero Section
+   ============================================ */
+.hero-name {
+  font-size: 3.5rem;
+  line-height: 1.2;
+}
+
+/* ============================================
+   Responsive Typography
+   ============================================ */
+@media (max-width: 768px) {
+  .liquid-glass h1:not(.hero-name),
+  .liquid-glass h2:not(.hero-name),
+  .liquid-glass h3:not(.hero-name),
+  .liquid-glass h4:not(.hero-name),
+  .liquid-glass h5:not(.hero-name),
+  .liquid-glass h6:not(.hero-name) {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    line-height: 1.3;
+  }
+  
+  .liquid-glass p,
+  .liquid-glass span {
+    font-size: clamp(0.875rem, 3vw, 1rem);
+    line-height: 1.5;
+  }
+}
+
+/* ============================================
+   Menu Components
+   ============================================ */
+[data-radix-popper-content-wrapper] > div,
+[role="menu"],
+[data-menu-content],
+div[class*="menu-content"],
+div[class*="MenuContent"] {
+  background: var(--bg-glass-menu);
+  backdrop-filter: var(--glass-blur-small);
+  -webkit-backdrop-filter: var(--glass-blur-small);
+  border: 1px solid var(--border-glass-light);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+  border-radius: var(--glass-radius-small);
+}
+
+.dark [data-radix-popper-content-wrapper] > div,
+.dark [role="menu"],
+.dark [data-menu-content],
+.dark div[class*="menu-content"],
+.dark div[class*="MenuContent"] {
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+[role="menuitem"],
+[data-menu-item],
+div[class*="menu-item"],
+div[class*="MenuItem"],
+button[class*="menu-item"],
+button[class*="MenuItem"] {
+  background: var(--bg-transparent);
+  border-radius: 0.5rem;
+  margin: 0.25rem;
+}
+
+/* ============================================
+   Background Gradient
+   ============================================ */
+.gradient-bg-light {
+  background: linear-gradient(135deg, rgba(189, 215, 250, 0.8) 0%, rgba(250, 245, 255, 0.6) 50%, rgba(252, 220, 248, 0.8) 100%);
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.gradient-bg-light::before,
+.gradient-bg-light::after {
+  content: '';
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.gradient-bg-light::before {
+  top: 25%;
+  left: 25%;
+  width: 24rem;
+  height: 24rem;
+  background: rgba(147, 197, 253, 0.08);
+  border-radius: 50%;
+  filter: blur(64px);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.gradient-bg-light::after {
+  bottom: 25%;
+  right: 25%;
+  width: 24rem;
+  height: 24rem;
+  background: rgba(196, 181, 253, 0.08);
+  border-radius: 50%;
+  filter: blur(64px);
+  animation: pulse 4s ease-in-out infinite 1s;
+}
+
+.dark .gradient-bg-light {
+  background: linear-gradient(135deg, rgb(50, 61, 84) 0%, rgba(40, 40, 45, 1) 50%, rgb(30, 27, 32) 100%);
+}
+
+/* ============================================
+   Contact Icons
+   ============================================ */
+.contact-icon {
+  filter: brightness(0) saturate(100%);
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.contact-icon:hover {
+  opacity: 1;
+}
+
+.dark .contact-icon {
+  filter: brightness(0) saturate(100%) invert(1);
+  opacity: 0.8;
+}
+
+.dark .contact-icon:hover {
+  opacity: 1;
+}
+
+/* ============================================
+   Utilities
+   ============================================ */
+html {
+  scroll-behavior: smooth;
+}
+
