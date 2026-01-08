@@ -8,7 +8,7 @@ def section_header(
     title: str,
     subtitle: str | None = None,
     title_size: str = "9",
-    subtitle_size: str = "5",
+    subtitle_size: str = "6",
     **kwargs
 ) -> rx.Component:
     """Create a standardised section header with optional subtitle.
@@ -17,7 +17,7 @@ def section_header(
         title: Main heading text
         subtitle: Optional subtitle text
         title_size: Size of the title heading (default: "9")
-        subtitle_size: Size of the subtitle text (default: "5")
+        subtitle_size: Size of the subtitle text (default: "6")
         **kwargs: Additional props to pass to the container
     """
     children = [

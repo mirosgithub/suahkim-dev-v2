@@ -12,7 +12,7 @@ def experiences_section() -> rx.Component:
         },
         {
             "company": "Self employed",
-            "role": "Private tutor",
+            "role": "Coding tutor",
             "description": "Teaching MATLAB and C programming for first-year engineering students.",
         },
     ]
@@ -31,7 +31,7 @@ def experiences_section() -> rx.Component:
             *experience_cards,
             class_name="responsive-grid-2",
             width="100%",
-            style={"maxWidth": "72rem"},
+            style={"maxWidth": "56rem"},
         ),
         spacing="8",
         align="center",

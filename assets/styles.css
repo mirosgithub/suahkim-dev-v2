@@ -411,7 +411,7 @@ button[class*="MenuItem"] {
 }
 
 /* ============================================
-   Connect Icons
+   Connect Section
    ============================================ */
 .connect-icon {
   filter: brightness(0) saturate(100%);
@@ -430,6 +430,18 @@ button[class*="MenuItem"] {
 
 .dark .connect-icon:hover {
   opacity: 1;
+}
+
+.connect-card {
+  min-width: 280px;
+  max-width: 380px;
+}
+
+@media (min-width: 768px) {
+  .connect-card {
+    min-width: 320px;
+    max-width: 420px;
+  }
 }
 
 /* ============================================

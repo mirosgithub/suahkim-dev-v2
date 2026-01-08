@@ -22,21 +22,23 @@ def experience_card(
     return glass_card(
         rx.vstack(
             rx.heading(
-                company,
+                role,
                 size="6",
-                class_name=f"{CLASS_NAMES['text_tertiary']} mb-4"
+                class_name=CLASS_NAMES['text_tertiary']
             ),
             rx.text(
-                role,
+                company,
                 size="5",
-                class_name=f"{CLASS_NAMES['text_secondary']} mb-4"
+                class_name=CLASS_NAMES['text_secondary']
             ),
             rx.text(
                 description,
                 size="5",
                 class_name=CLASS_NAMES["text_secondary"]
             ),
-            spacing="4",
+            spacing="2",
+            align="start",
+            width="100%",
         ),
         padding="p-8",
         width="100%",

@@ -57,7 +57,7 @@ def skills_section() -> rx.Component:
             *category_cards,
             class_name="responsive-grid-2",
             width="100%",
-            style={"maxWidth": "72rem"},
+            style={"maxWidth": "56rem"},
         ),
         spacing="8",
         align="center",
