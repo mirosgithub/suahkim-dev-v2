@@ -24,7 +24,7 @@ def section_header(
         rx.heading(
             title,
             size=title_size,
-            class_name=CLASS_NAMES["section_title"],
+            class_name=f"{CLASS_NAMES['section_title']} px-4",
             style={"fontFamily": TYPOGRAPHY["font_family"]},
         )
     ]

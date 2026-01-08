@@ -49,7 +49,7 @@ def connect_link(
             content,
             padding="p-8",
             width="100%",
-            style={"minWidth": "320px", "maxWidth": "380px"},
+            style={"minWidth": "280px", "maxWidth": "380px"},
         ),
         href=href,
         class_name="text-center",

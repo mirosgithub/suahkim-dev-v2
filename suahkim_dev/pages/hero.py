@@ -9,7 +9,7 @@ def hero_section() -> rx.Component:
             rx.heading(
                 "Suah Kim",
                 size="9",
-                class_name="text-gray-900 dark:text-white mb-2 hero-name",
+                class_name="text-gray-900 dark:text-white mb-2 hero-name text-center",
                 style={"fontFamily": "var(--font-heading)"},
             ),
             rx.heading(

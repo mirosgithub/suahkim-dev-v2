@@ -53,10 +53,9 @@ def skills_section() -> rx.Component:
     ]
     
     content = rx.vstack(
-        rx.grid(
+        rx.box(
             *category_cards,
-            columns="2",
-            spacing="8",
+            class_name="responsive-grid-2",
             width="100%",
             style={"maxWidth": "72rem"},
         ),

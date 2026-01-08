@@ -27,10 +27,9 @@ def experiences_section() -> rx.Component:
     ]
     
     content = rx.vstack(
-        rx.grid(
+        rx.box(
             *experience_cards,
-            columns="2",
-            spacing="8",
+            class_name="responsive-grid-2",
             width="100%",
             style={"maxWidth": "72rem"},
         ),

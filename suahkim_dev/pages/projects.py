@@ -36,10 +36,9 @@ def projects_section() -> rx.Component:
     ]
     
     content = rx.vstack(
-        rx.grid(
+        rx.box(
             *project_cards,
-            columns="3",
-            spacing="6",
+            class_name="responsive-grid-3",
             width="100%",
             style={"maxWidth": "80rem"},
         ),
