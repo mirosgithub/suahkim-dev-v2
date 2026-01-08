@@ -9,14 +9,14 @@ def contact_section() -> rx.Component:
         {
             "icon": "/linkedin.svg",
             "title": "LinkedIn",
-            "username": "@username",
-            "href": "https://linkedin.com",
+            "username": "@Suah Kim",
+            "href": "https://linkedin.com/in/suah-adela-kim",
         },
         {
             "icon": "/github.svg",
             "title": "GitHub",
-            "username": "@username",
-            "href": "https://github.com",
+            "username": "@mirosgithub",
+            "href": "https://github.com/mirosgithub",
         },
     ]
     
@@ -61,7 +61,7 @@ def contact_section() -> rx.Component:
     return section(
         content,
         section_id="contact",
-        title="Contact",
-        subtitle="Subheading",
+        title="Connect",
+        subtitle="Explore my work and get in touch",
     )
 

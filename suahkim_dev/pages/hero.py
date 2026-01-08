@@ -13,12 +13,12 @@ def hero_section() -> rx.Component:
                 style={"fontFamily": "var(--font-heading)"},
             ),
             rx.heading(
-                "Intern software developer",
+                "Intern Software Developer | Software Engineering Student",
                 size="6",
                 class_name="text-gray-700 dark:text-gray-300 mb-4 text-center",
             ),
             rx.text(
-                "Auckland, NZ",
+                "Seoul, Korea ...✈ Auckland, New Zealand",
                 size="5",
                 class_name="text-gray-600 dark:text-gray-400 max-w-2xl text-center",
             ),

@@ -8,7 +8,7 @@ NAV_LINKS = [
     {"text": "Experiences", "section_id": "experiences"},
     {"text": "Projects", "section_id": "projects"},
     {"text": "Skills", "section_id": "skills"},
-    {"text": "Contact", "section_id": "contact"},
+    {"text": "Connect", "section_id": "contact"},
 ]
 
 

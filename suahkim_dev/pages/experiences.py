@@ -6,14 +6,14 @@ from ..ui.experience_card import experience_card
 def experiences_section() -> rx.Component:
     experiences = [
         {
-            "company": "Company",
-            "role": "Role",
-            "description": "Description",
+            "company": "AKA Intelligence",
+            "role": "Intern software developer",
+            "description": "Implementing AI training data injection pipelines.",
         },
         {
-            "company": "Company",
-            "role": "Role",
-            "description": "Description",
+            "company": "Self employed",
+            "role": "Private tutor",
+            "description": "Teaching MATLAB and C programming for first-year engineering students.",
         },
     ]
     
@@ -44,4 +44,5 @@ def experiences_section() -> rx.Component:
         content,
         section_id="experiences",
         title="Experiences",
+        subtitle="Work that I genuinely enjoy"
     )

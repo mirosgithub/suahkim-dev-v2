@@ -6,22 +6,22 @@ from ..ui.project_card import project_card
 def projects_section() -> rx.Component:
     projects = [
         {
-            "title": "Title",
-            "category": "Category",
-            "description": "Description",
-            "tags": ["Stack1", "Stack2", "Stack3"],
+            "title": "Portfolio website v.2",
+            "category": "Web app",
+            "description": "Second iteration of my portfolio website, built with Reflex to explore Python-based web frameworks.",
+            "tags": ["Python", "Reflex", "CSS", "Docker", "Cloud Run"],
         },
         {
-            "title": "Title",
-            "category": "Category",
-            "description": "Description",
-            "tags": ["Stack1", "Stack2", "Stack3"],
+            "title": "Emoji processor",
+            "category": "Mini tool",
+            "description": "Tool to extract and process emojis from image sheets for use as custom Notion emojis.",
+            "tags": ["Python", "OpenCV"],
         },
         {
-            "title": "Title",
-            "category": "Category",
-            "description": "Description",
-            "tags": ["Stack1", "Stack2", "Stack3"],
+            "title": "Lullab.ai",
+            "category": "AI web app",
+            "description": "Generates and narrates personalised bedtime stories for children and adults. Backend developer on 1st place team.",
+            "tags": ["Python", "Flask", "Gemini API", "Docker", "Cloud Run"],
         },
     ]
     
@@ -53,6 +53,6 @@ def projects_section() -> rx.Component:
         content,
         section_id="projects",
         title="Projects",
-        subtitle="Subheading",
+        subtitle="Coding something cool every day",
     )
 
