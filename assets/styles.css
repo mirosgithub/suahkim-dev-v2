@@ -484,3 +484,10 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Hide Reflex production badge */
+[aria-label="Made with Reflex"],
+a[href*="reflex.dev"] {
+  display: none !important;
+  visibility: hidden !important;
+}
+
