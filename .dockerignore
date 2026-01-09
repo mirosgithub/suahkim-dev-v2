@@ -1,0 +1,7 @@
+.web
+.states
+__pycache__
+*.py[cod]
+*.db
+.git
+.gitignore
