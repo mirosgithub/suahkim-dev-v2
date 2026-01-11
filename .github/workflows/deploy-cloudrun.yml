@@ -94,11 +94,10 @@ jobs:
           p = Path("nginx.conf")
           s = p.read_text()
 
-          s2 = re.sub(
-              r'(?m)^\s*proxy_pass\s+https?://[^;]+;',
-              f'   proxy_pass {backend_url};',
-              s,
-          )
+          pattern = r'(?m)^(\s*)proxy_pass\s+[^;]+;'
+          s2, n = re.subn(pattern, rf'\1proxy_pass {backend_url};', s)
+          if n == 0:
+            raise SystemExit("No proxy_pass directives were updated in nginx.conf; refusing to build a broken frontend image.")
           p.write_text(s2)
           PY
 
