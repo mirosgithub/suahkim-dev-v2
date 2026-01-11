@@ -87,10 +87,13 @@ jobs:
           BACKEND_URL: ${{ needs.deploy_backend.outputs.backend_url }}
         run: |
           python - <<'PY'
+          import os
           import re
           from pathlib import Path
 
-          backend_url = "${BACKEND_URL}".strip()
+          backend_url = os.environ["BACKEND_URL"].strip()
+          if not backend_url.startswith(("http://", "https://")):
+            raise SystemExit(f"BACKEND_URL does not look like a URL: {backend_url!r}")
           p = Path("nginx.conf")
           s = p.read_text()
 
@@ -100,6 +103,11 @@ jobs:
             raise SystemExit("No proxy_pass directives were updated in nginx.conf; refusing to build a broken frontend image.")
           p.write_text(s2)
           PY
+
+      - name: Verify nginx.conf proxy_pass values
+        run: |
+          echo "proxy_pass lines after rewrite:"
+          grep -n "proxy_pass" nginx.conf || true
 
       - name: Configure Docker auth for Artifact Registry
         run: gcloud auth configure-docker "${REGION}-docker.pkg.dev" --quiet
