@@ -67,6 +67,14 @@ jobs:
           env_vars: |
             BACKEND_PORT=8080
           env_vars_update_strategy: merge
+          flags: |
+            --memory=512Mi
+            --cpu=1
+            --cpu-throttling
+            --concurrency=100
+            --min-instances=0
+            --max-instances=10
+            --timeout=300
 
   deploy_frontend:
     runs-on: ubuntu-latest
@@ -135,4 +143,12 @@ jobs:
           env_vars: |
             API_URL=${{ needs.deploy_backend.outputs.backend_url }}
           env_vars_update_strategy: merge
+          flags: |
+            --memory=256Mi
+            --cpu=1
+            --cpu-throttling
+            --concurrency=100
+            --min-instances=0
+            --max-instances=10
+            --timeout=300
 
