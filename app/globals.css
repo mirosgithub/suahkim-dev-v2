@@ -1,0 +1,46 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+@custom-variant dark (&:is(.dark *));
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+
+  code,
+  pre {
+    font-family: var(--font-geist-mono), ui-monospace, monospace;
+  }
+}
+
+:root {
+  --sh-class: #7aa2f7;
+  --sh-sign: #89ddff;
+  --sh-string: #9ece6a;
+  --sh-keyword: #bb9af7;
+  --sh-comment: #565f89;
+  --sh-jsxliterals: #7aa2f7;
+  --sh-property: #73daca;
+  --sh-entity: #e0af68;
+  
+  /* Background gradients */
+  --bg-gradient-light: linear-gradient(135deg, rgba(189, 215, 250, 0.8) 0%, rgba(250, 245, 255, 0.6) 50%, rgba(252, 220, 248, 0.8) 100%);
+  --bg-gradient-dark: linear-gradient(135deg, rgb(50, 61, 84) 0%, rgba(40, 40, 45, 1) 50%, rgb(30, 27, 32) 100%);
+}
+
+.dark {
+  --bg-gradient: var(--bg-gradient-dark);
+}
+
+body {
+  background: var(--bg-gradient-light);
+  min-height: 100vh;
+}
+
+.dark body {
+  background: var(--bg-gradient-dark);
+}

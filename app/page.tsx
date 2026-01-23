@@ -1,0 +1,353 @@
+'use client'
+import { motion } from 'motion/react'
+import { XIcon } from 'lucide-react'
+import { Magnetic } from '@/components/ui/magnetic'
+import {
+  MorphingDialog,
+  MorphingDialogTrigger,
+  MorphingDialogContent,
+  MorphingDialogClose,
+  MorphingDialogContainer,
+} from '@/components/ui/morphing-dialog'
+import Link from 'next/link'
+import { AnimatedBackground } from '@/components/ui/animated-background'
+import {
+  PROJECTS,
+  WORK_EXPERIENCE,
+  BLOG_POSTS,
+  SOCIAL_LINKS,
+} from './data'
+
+const VARIANTS_CONTAINER = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+}
+
+const VARIANTS_SECTION = {
+  hidden: { opacity: 0, y: 20, filter: 'blur(8px)' },
+  visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
+}
+
+const TRANSITION_SECTION = {
+  duration: 0.3,
+}
+
+type ProjectMediaProps = {
+  src: string
+  type: 'video' | 'image'
+  alt?: string
+}
+
+const dialogTransition = {
+  type: 'spring' as const,
+  bounce: 0,
+  duration: 0.3,
+}
+
+const closeButtonVariants = {
+  initial: { opacity: 0 },
+  animate: {
+    opacity: 1,
+    transition: { delay: 0.3, duration: 0.1 },
+  },
+  exit: { opacity: 0, transition: { duration: 0 } },
+}
+
+function ProjectMedia({ src, type, alt }: ProjectMediaProps) {
+  const handleVideoError = (e: React.SyntheticEvent<HTMLVideoElement>) => {
+    console.error('Video failed to load:', src)
+    const target = e.target as HTMLVideoElement
+    target.style.display = 'none'
+  }
+
+  return (
+    <MorphingDialog transition={dialogTransition}>
+      <MorphingDialogTrigger>
+        {type === 'video' ? (
+          <video
+            src={src}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="aspect-video w-full cursor-zoom-in rounded-xl bg-zinc-100 dark:bg-zinc-900"
+            onError={handleVideoError}
+          />
+        ) : (
+          <img
+            src={src}
+            alt={alt}
+            className="aspect-video w-full cursor-zoom-in rounded-xl bg-zinc-100 object-cover dark:bg-zinc-900"
+          />
+        )}
+      </MorphingDialogTrigger>
+      <MorphingDialogContainer>
+        <MorphingDialogContent className="relative aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
+          {type === 'video' ? (
+            <video
+              src={src}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="aspect-video h-[50vh] w-full rounded-xl md:h-[70vh] bg-zinc-100 dark:bg-zinc-900"
+              onError={handleVideoError}
+            />
+          ) : (
+            <img
+              src={src}
+              alt={alt}
+              className="aspect-video h-[50vh] w-full rounded-xl object-cover md:h-[70vh] bg-zinc-100 dark:bg-zinc-900"
+            />
+          )}
+        </MorphingDialogContent>
+        <MorphingDialogClose
+          className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1"
+          variants={closeButtonVariants}
+        >
+          <XIcon className="h-5 w-5 text-zinc-500" />
+        </MorphingDialogClose>
+      </MorphingDialogContainer>
+    </MorphingDialog>
+  )
+}
+
+function MagneticSocialLink({
+  children,
+  link,
+}: {
+  children: React.ReactNode
+  link: string
+}) {
+  return (
+    <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
+      <a
+        href={link}
+        className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:text-zinc-600 dark:text-zinc-100 dark:hover:text-zinc-300"
+        data-id={link}
+      >
+        {children}
+        <svg
+          width="15"
+          height="15"
+          viewBox="0 0 15 15"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-3 w-3"
+        >
+          <path
+            d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z"
+            fill="currentColor"
+            fillRule="evenodd"
+            clipRule="evenodd"
+          ></path>
+        </svg>
+      </a>
+    </Magnetic>
+  )
+}
+
+export default function Personal() {
+  return (
+    <motion.main
+      className="space-y-24"
+      variants={VARIANTS_CONTAINER}
+      initial="hidden"
+      animate="visible"
+    >
+      <motion.section
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+      >
+        <div className="flex-1">
+          <p className="text-zinc-600 dark:text-zinc-400">
+            Penultimate year software engineering student based in Auckland, New Zealand. Loves to brainstorm, create and experiment.
+          </p>
+        </div>
+      </motion.section>
+
+      <motion.section
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+      >
+        <h3 className="mb-5 text-lg font-medium">Projects</h3>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {PROJECTS.map((project) => (
+            <div key={project.name} className="space-y-2">
+              {project.video ? (
+                <ProjectMedia src={project.video} type="video" />
+              ) : project.image ? (
+                <ProjectMedia src={project.image} type="image" alt={project.name} />
+              ) : null}
+              <AnimatedBackground
+                enableHover
+                className="h-full w-full rounded-lg backdrop-blur-xl bg-white/40 dark:bg-gray-900/40 border border-white/50 dark:border-gray-700/50 shadow-2xl"
+                transition={{
+                  type: 'spring',
+                  bounce: 0,
+                  duration: 0.2,
+                }}
+              >
+                <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
+                  <Link
+                    key={project.id}
+                    className="-mx-3 rounded-xl px-3 py-3 block"
+                    href={project.link}
+                    data-id={project.id}
+                  >
+                    <div className="flex flex-col space-y-1">
+                      <h4 className="font-base font-[450] text-zinc-900 dark:text-zinc-50">
+                        {project.name}
+                      </h4>
+                      <p className="text-base text-zinc-600 dark:text-zinc-400">
+                        {project.description}
+                      </p>
+                    </div>
+                  </Link>
+                </Magnetic>
+              </AnimatedBackground>
+            </div>
+          ))}
+        </div>
+      </motion.section>
+
+      <motion.section
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+      >
+        <h3 className="mb-5 text-lg font-medium">Work Experience</h3>
+        <div className="flex flex-col space-y-0">
+          <AnimatedBackground
+            enableHover
+            className="h-full w-full rounded-lg backdrop-blur-xl bg-white/40 dark:bg-gray-900/40 border border-white/50 dark:border-gray-700/50 shadow-2xl"
+            transition={{
+              type: 'spring',
+              bounce: 0,
+              duration: 0.2,
+            }}
+          >
+            {WORK_EXPERIENCE.map((job) => (
+              <Magnetic key={job.id} springOptions={{ bounce: 0 }} intensity={0.3}>
+                {job.link ? (
+                  <a
+                    className="relative inline-flex -mx-3 rounded-xl px-3 py-3 w-full"
+                    href={job.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-id={job.id}
+                  >
+                    <div className="relative flex w-full flex-row justify-between items-start">
+                      <div>
+                        <h4 className="font-normal dark:text-zinc-100">
+                          {job.title}
+                        </h4>
+                        <p className="text-zinc-500 dark:text-zinc-400">
+                          {job.company}
+                        </p>
+                        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+                          {job.description}
+                        </p>
+                      </div>
+                      <p className="text-zinc-600 dark:text-zinc-400 whitespace-nowrap ml-4">
+                        {job.start} - {job.end}
+                      </p>
+                    </div>
+                  </a>
+                ) : (
+                  <div
+                    className="relative inline-flex -mx-3 rounded-xl px-3 py-3 w-full"
+                    data-id={job.id}
+                  >
+                    <div className="relative flex w-full flex-row justify-between items-start">
+                      <div>
+                        <h4 className="font-normal dark:text-zinc-100">
+                          {job.title}
+                        </h4>
+                        <p className="text-zinc-500 dark:text-zinc-400">
+                          {job.company}
+                        </p>
+                        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+                          {job.description}
+                        </p>
+                      </div>
+                      <p className="text-zinc-600 dark:text-zinc-400 whitespace-nowrap ml-4">
+                        {job.start} - {job.end}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </Magnetic>
+            ))}
+          </AnimatedBackground>
+        </div>
+      </motion.section>
+
+
+      <motion.section
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+      >
+        <h3 className="mb-3 text-lg font-medium">Blog</h3>
+        <div className="flex flex-col space-y-0">
+          <AnimatedBackground
+            enableHover
+            className="h-full w-full rounded-lg backdrop-blur-xl bg-white/40 dark:bg-gray-900/40 border border-white/50 dark:border-gray-700/50 shadow-2xl"
+            transition={{
+              type: 'spring',
+              bounce: 0,
+              duration: 0.2,
+            }}
+          >
+            {BLOG_POSTS.map((post) => (
+              <Magnetic key={post.uid} springOptions={{ bounce: 0 }} intensity={0.3}>
+                <Link
+                  className="-mx-3 rounded-xl px-3 py-3"
+                  href={post.link}
+                  data-id={post.uid}
+                >
+                  <div className="flex flex-col space-y-1">
+                    <h4 className="font-normal dark:text-zinc-100">
+                      {post.title}
+                    </h4>
+                    <p className="text-zinc-500 dark:text-zinc-400">
+                      {post.description}
+                    </p>
+                  </div>
+                </Link>
+              </Magnetic>
+            ))}
+          </AnimatedBackground>
+        </div>
+      </motion.section>
+
+      <motion.section
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+      >
+        <h3 className="mb-5 text-lg font-medium">Connect</h3>
+        <div className="flex items-center justify-start space-x-3">
+          <AnimatedBackground
+            enableHover
+            className="h-full w-full rounded-lg backdrop-blur-xl bg-white/40 dark:bg-gray-900/40 border border-white/50 dark:border-gray-700/50 shadow-2xl inline-flex items-center justify-start p-2 gap-3"
+            transition={{
+              type: 'spring',
+              bounce: 0,
+              duration: 0.2,
+            }}
+          >
+            {SOCIAL_LINKS.map((link) => (
+              <MagneticSocialLink key={link.label} link={link.link}>
+                {link.label}
+              </MagneticSocialLink>
+            ))}
+          </AnimatedBackground>
+        </div>
+      </motion.section>
+    </motion.main>
+  )
+}
