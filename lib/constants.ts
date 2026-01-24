@@ -1,1 +1,1 @@
-export const WEBSITE_URL = 'https://example.com'
+export const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL || 'https://example.com'
