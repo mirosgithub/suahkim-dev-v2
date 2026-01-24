@@ -1,48 +1,50 @@
 # suahkim-dev-v2
 
-[![Deploy to Cloud Run](https://github.com/mirosgithub/suahkim-dev-v2/actions/workflows/deploy-cloudrun.yml/badge.svg?branch=main)](https://github.com/mirosgithub/suahkim-dev-v2/actions/workflows/deploy-cloudrun.yml)
+![Website Deploy](https://deploy-badge.vercel.app/?url=http%3A%2F%2Fsuahkim.dev&style=flat-square&logo=Vercel&name=Vercel)
 
-Personal site built with [Reflex](https://reflex.dev/), deployed to Google Cloud Run.
+Personal portfolio website built with [Next.js](https://nextjs.org/), deployed to [Vercel](https://vercel.com).
+
+## Migration
+
+This project was recently migrated from [Reflex](https://reflex.dev/) (Python-based web framework) deployed on Google Cloud Run to Next.js on Vercel. The migration was driven by:
+
+- **Deployment costs**: Vercel's free tier provides a more cost-effective solution for a personal portfolio compared to Cloud Run's per-request pricing model
+- **Frontend functionality**: Next.js offers more extensive frontend capabilities and a richer ecosystem for building modern web experiences
 
 ## Deployment
 
-Deploys on pushes to `main` via GitHub Actions (see the workflow badge above).
+Deploys automatically on pushes to `main` via Vercel. The deployment status badge above shows the current deployment status.
 
 ## Local development
 
-Prereqs: Python 3.14 and [uv](https://docs.astral.sh/uv/).
+### Prerequisites
+
+- Node.js 20.x or later
+- npm or yarn
+
+### Setup
 
 ```bash
-uv sync
-uv run reflex run
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
 ```
 
-### Environment Configuration
+The app will be available at [http://localhost:3000](http://localhost:3000).
 
-The app automatically detects the environment and adjusts ports accordingly:
+### Available scripts
 
-- **Development mode** (default): Uses ports 3001 (frontend) and 8081 (backend) to avoid conflicts
-- **Production mode**: Uses ports 3000 (frontend) and 8080 (backend)
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
-To switch between modes, set the `ENV` environment variable:
+## Tech stack
 
-```bash
-# Development (default)
-ENV=dev uv run reflex run
-
-# Production mode
-ENV=prod uv run reflex run
-```
-
-You can also create a `.env` file (see `.env.example`) to set custom ports:
-
-```bash
-# Copy the example file
-cp .env.example .env
-
-# Edit .env to customise ports
-FRONTEND_PORT=3001
-BACKEND_PORT=8081
-```
-
-**Note**: Reflex will automatically use the next available port if your specified port is already in use (development mode only).
+- [Next.js 15](https://nextjs.org/) - React framework
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- [MDX](https://mdxjs.com/) - Blog posts
+- [Motion](https://motion-primitives.com/) - Animations
