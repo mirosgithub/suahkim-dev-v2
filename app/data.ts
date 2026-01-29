@@ -80,7 +80,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     description: 'Implementing AI training data ingestion pipelines.',
     start: 'Dec 2025',
     end: 'Present',
-    link: '',
+    link: 'https://www.akaintelligence.com/',
     id: 'aka-intelligence',
   },
   {
