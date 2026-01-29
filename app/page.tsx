@@ -95,14 +95,14 @@ function ProjectMedia({ src, type, alt }: ProjectMediaProps) {
               loop
               muted
               playsInline
-              className="aspect-video h-[50vh] w-full rounded-xl md:h-[70vh] bg-zinc-100 dark:bg-zinc-900"
+              className="aspect-video h-[50vh] w-full md:h-[70vh] bg-zinc-100 dark:bg-zinc-900"
               onError={handleVideoError}
             />
           ) : (
             <img
               src={src}
               alt={alt}
-              className="aspect-video h-[50vh] w-full rounded-xl object-cover md:h-[70vh] bg-zinc-100 dark:bg-zinc-900"
+              className="aspect-video h-[50vh] w-full object-cover md:h-[70vh] bg-zinc-100 dark:bg-zinc-900"
             />
           )}
         </MorphingDialogContent>

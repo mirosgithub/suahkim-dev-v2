@@ -42,7 +42,6 @@ export const PROJECTS: Project[] = [
     id: 'portfolio-v2',
     image: '/portfolio-thumbnail.png',
     githubUrl: 'https://github.com/mirosgithub/suahkim-dev-v2',
-    demoUrl: 'https://suahkim.dev',
     techStack: ['Next.js', 'TypeScript', 'TailwindCSS', 'Vercel'],
     details:
       'This is a personal website to showcase my work and ideas with project demos and blog posts. I aim to update it as often as possible so the content will be most up-to-date. It is an ongoing project with new features coming up, so stay tuned!\n\nThe first version (version 1 in Flask, my first web app) was developed and deployed in July 2025. I used plain HTML/CSS for the frontend, and struggled with contact form spamming issues. It required manual deployment every time I update the structure and I wanted to try out modern UI/UX in React-based web apps, so I decided to redesign the website in version 2.\n\nInitially I chose Reflex to transition to React-based web development. It was straightforward to learn as it was Python-based, but lacked UI components, functionality and deployment support. As a result, I often had to rely on trial and error or wrap custom React components, which undermined the reason for choosing Reflex. Eventually I moved to Next.js, which provides easy deployment, custom domain support, automatic CI/CD and extensive UI library resources.',
@@ -69,7 +68,7 @@ export const PROJECTS: Project[] = [
     githubUrl: 'https://github.com/mirosgithub/lullabai',
     demoUrl: 'https://lullab-ai-713855574593.asia-southeast1.run.app/',
     techStack: ['Python', 'Flask', 'GoogleAPIs', 'Docker', 'GoogleCloudRun'],
-    details:'Lullab.ai creates and narrates custom bedtime stories for both children and adults. Users can input their name, keywords and their reasons for insomnia to generate unique and calming stories.\n\nIt was developed during the August 2025 WDCC x SESA Hackathon. The theme was Nostalgia, and our initial concept overlapped with two other teams.  Halfway through day one, we pivoted to creating nostalgic bedtime stories from childhood into comforting experiences for all ages.\n\nOur team had limited programming experience so I took charge of backend development. This challenge led me to develop and deploy my first AI-integrated application at my first hackathon with a team I met on the day.  Despite the difficulties, we achieved first place at the largest tertiary hackathon in NZ!',
+    details: 'Lullab.ai creates and narrates custom bedtime stories for both children and adults. Users can input their name, keywords and their reasons for insomnia to generate unique and calming stories.\n\nIt was developed during the August 2025 WDCC x SESA Hackathon. The theme was Nostalgia, and our initial concept overlapped with two other teams.  Halfway through day one, we pivoted to creating nostalgic bedtime stories from childhood into comforting experiences for all ages.\n\nOur team had limited programming experience so I took charge of backend development. This challenge led me to develop and deploy my first AI-integrated application at my first hackathon with a team I met on the day.  Despite the difficulties, we achieved first place at the largest tertiary hackathon in NZ!',
   },
 ]
 

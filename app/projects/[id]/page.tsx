@@ -43,6 +43,15 @@ export default async function ProjectPage({
         {project.name}
       </h1>
 
+      {project.description && (
+        <>
+          <p className="mb-10 text-zinc-600 dark:text-zinc-400">
+            {project.description}
+          </p>
+          <br />
+        </>
+      )}
+
       {(project.demoUrl || project.githubUrl) && (
         <div className="mb-8 flex flex-wrap items-center gap-3">
           {project.demoUrl && (
@@ -126,16 +135,16 @@ export default async function ProjectPage({
           </div>
         )}
 
-        {project.details && (
-          <div className="prose prose-gray dark:prose-invert">
-            {project.details.split('\n\n').map((paragraph, index) => {
-              const projectShortName = project.name.split(':')[0]?.trim() || project.name
-              const headers = [
-                `What is ${projectShortName}?`,
-                'Why was it created?',
-                'Any challenges?',
-              ]
-              return (
+        {project.details && (() => {
+          const projectShortName = project.name.split(':')[0]?.trim() || project.name
+          const headers = [
+            `What is ${projectShortName}?`,
+            'Why was it created?',
+            'Any challenges?',
+          ]
+          return (
+            <div className="prose prose-gray dark:prose-invert">
+              {project.details.split('\n\n').map((paragraph, index) => (
                 <div key={index} className="mb-6">
                   <h3 className="text-lg font-medium text-zinc-900 dark:text-zinc-50 mb-2 not-prose">
                     {headers[index]}
@@ -144,19 +153,19 @@ export default async function ProjectPage({
                     {paragraph}
                   </p>
                 </div>
-              )
-            })}
-          </div>
-        )}
+              ))}
+            </div>
+          )
+        })()}
       </div>
 
       {project.techStack && project.techStack.length > 0 && (
         <div className="mt-8 text-sm text-zinc-600 dark:text-zinc-400 whitespace-pre">
           <br />
-          {project.techStack.map((tech, index) => (
+          {project.techStack.map((tech, index, arr) => (
             <span key={tech}>
               #{tech}
-              {index < project.techStack!.length - 1 && '    '}
+              {index < arr.length - 1 && '    '}
             </span>
           ))}
         </div>
