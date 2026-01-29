@@ -30,7 +30,7 @@ export function Header() {
             className="text-zinc-600 dark:text-zinc-500"
             delay={0.5}
           >
-            Intern @AKA | Software Engineering @UoA
+            Intern @AKA | Part 3 Software Engineering @UoA
           </TextEffect>
         </div>
       </header>
@@ -67,7 +67,7 @@ export function Header() {
           className="text-zinc-600 dark:text-zinc-500"
           delay={0.5}
         >
-          Intern @AKA | Software Engineering @UoA
+          Intern @AKA | Part 3 Software Engineering @UoA
         </TextEffect>
       </div>
     </header>

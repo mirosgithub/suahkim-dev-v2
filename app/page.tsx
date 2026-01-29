@@ -87,7 +87,7 @@ function ProjectMedia({ src, type, alt }: ProjectMediaProps) {
         )}
       </MorphingDialogTrigger>
       <MorphingDialogContainer>
-        <MorphingDialogContent className="relative aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
+        <MorphingDialogContent className="relative aspect-video rounded-2xl overflow-hidden">
           {type === 'video' ? (
             <video
               src={src}
@@ -128,7 +128,7 @@ function MagneticSocialLink({
     <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
       <a
         href={link}
-        className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:text-zinc-600 dark:text-zinc-100 dark:hover:text-zinc-300"
+        className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full pl-0 pr-2.5 py-1 text-sm text-black transition-colors duration-200 hover:text-zinc-600 dark:text-zinc-100 dark:hover:text-zinc-300"
         data-id={link}
       >
         {children}
@@ -166,7 +166,8 @@ export default function Personal() {
       >
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
-            Penultimate year software engineering student based in Auckland, New Zealand. Loves to brainstorm, create and experiment.
+            Kia ora! I’m Suah, originally from South Korea and now based in Auckland, New Zealand. I enjoy projects that reward curiosity, continued learning and hands-on practice, from software engineering through to painting and fashion design.
+
           </p>
         </div>
       </motion.section>
@@ -183,7 +184,9 @@ export default function Personal() {
                 <ProjectMedia src={project.video} type="video" />
               ) : project.image ? (
                 <ProjectMedia src={project.image} type="image" alt={project.name} />
-              ) : null}
+              ) : (
+                <ProjectMedia src="/logo.png" type="image" alt={project.name} />
+              )}
               <AnimatedBackground
                 enableHover
                 className="h-full w-full rounded-lg backdrop-blur-xl bg-white/40 dark:bg-gray-900/40 border border-white/50 dark:border-gray-700/50 shadow-2xl"
@@ -293,36 +296,42 @@ export default function Personal() {
         transition={TRANSITION_SECTION}
       >
         <h3 className="mb-3 text-lg font-medium">Blog</h3>
-        <div className="flex flex-col space-y-0">
-          <AnimatedBackground
-            enableHover
-            className="h-full w-full rounded-lg backdrop-blur-xl bg-white/40 dark:bg-gray-900/40 border border-white/50 dark:border-gray-700/50 shadow-2xl"
-            transition={{
-              type: 'spring',
-              bounce: 0,
-              duration: 0.2,
-            }}
-          >
-            {BLOG_POSTS.map((post) => (
-              <Magnetic key={post.uid} springOptions={{ bounce: 0 }} intensity={0.3}>
-                <Link
-                  className="-mx-3 rounded-xl px-3 py-3"
-                  href={post.link}
-                  data-id={post.uid}
-                >
-                  <div className="flex flex-col space-y-1">
-                    <h4 className="font-normal dark:text-zinc-100">
-                      {post.title}
-                    </h4>
-                    <p className="text-zinc-500 dark:text-zinc-400">
-                      {post.description}
-                    </p>
-                  </div>
-                </Link>
-              </Magnetic>
-            ))}
-          </AnimatedBackground>
-        </div>
+        {BLOG_POSTS.length > 0 ? (
+          <div className="flex flex-col space-y-0">
+            <AnimatedBackground
+              enableHover
+              className="h-full w-full rounded-lg backdrop-blur-xl bg-white/40 dark:bg-gray-900/40 border border-white/50 dark:border-gray-700/50 shadow-2xl"
+              transition={{
+                type: 'spring',
+                bounce: 0,
+                duration: 0.2,
+              }}
+            >
+              {BLOG_POSTS.map((post) => (
+                <Magnetic key={post.uid} springOptions={{ bounce: 0 }} intensity={0.3}>
+                  <Link
+                    className="-mx-3 rounded-xl px-3 py-3"
+                    href={post.link}
+                    data-id={post.uid}
+                  >
+                    <div className="flex flex-col space-y-1">
+                      <h4 className="font-normal dark:text-zinc-100">
+                        {post.title}
+                      </h4>
+                      <p className="text-zinc-500 dark:text-zinc-400">
+                        {post.description}
+                      </p>
+                    </div>
+                  </Link>
+                </Magnetic>
+              ))}
+            </AnimatedBackground>
+          </div>
+        ) : (
+          <p className="pl-3 text-zinc-600 dark:text-zinc-400">
+            Sharing my thoughts and learnings soon!
+          </p>
+        )}
       </motion.section>
 
       <motion.section
@@ -330,10 +339,10 @@ export default function Personal() {
         transition={TRANSITION_SECTION}
       >
         <h3 className="mb-5 text-lg font-medium">Connect</h3>
-        <div className="flex items-center justify-start space-x-3">
+        <div className="flex items-center justify-start space-x-3 pl-3">
           <AnimatedBackground
             enableHover
-            className="h-full w-full rounded-lg backdrop-blur-xl bg-white/40 dark:bg-gray-900/40 border border-white/50 dark:border-gray-700/50 shadow-2xl inline-flex items-center justify-start p-2 gap-3"
+            className="h-full w-full rounded-lg backdrop-blur-xl bg-white/40 dark:bg-gray-900/40 border border-white/50 dark:border-gray-700/50 shadow-2xl inline-flex items-center justify-start py-2 pr-2 pl-0 gap-3"
             transition={{
               type: 'spring',
               bounce: 0,

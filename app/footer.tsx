@@ -71,7 +71,6 @@ export function Footer() {
         <a href="https://github.com/mirosgithub" target="_blank">
           <TextLoop className="text-xs text-zinc-500">
             <span>© 2026 Suah Kim.</span>
-            <span>Reflex-born, Next.js raised.</span>
             <span>Built with caffeine and curiosity.</span>
           </TextLoop>
         </a>
