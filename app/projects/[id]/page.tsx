@@ -114,27 +114,6 @@ export default async function ProjectPage({
       )}
 
       <div className="space-y-8">
-        {(project.image || project.video) && (
-          <div className="rounded-2xl overflow-hidden">
-            {project.image ? (
-              <img
-                src={project.image}
-                alt={project.name}
-                className="aspect-video w-full object-cover bg-zinc-100 dark:bg-zinc-900"
-              />
-            ) : project.video ? (
-              <video
-                src={project.video}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="aspect-video w-full bg-zinc-100 dark:bg-zinc-900"
-              />
-            ) : null}
-          </div>
-        )}
-
         {project.details && (() => {
           const projectShortName = project.name.split(':')[0]?.trim() || project.name
           const headers = [

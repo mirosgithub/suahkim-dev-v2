@@ -2,8 +2,6 @@ type Project = {
   name: string
   description: string
   link: string
-  video?: string
-  image?: string
   id: string
   details?: string
   githubUrl?: string
@@ -40,7 +38,6 @@ export const PROJECTS: Project[] = [
       'My redesigned personal portfolio, migrated from Reflex to Next.js for improved frontend functionalities and cost effective deployment.',
     link: '/projects/portfolio-v2',
     id: 'portfolio-v2',
-    image: '/portfolio-thumbnail.png',
     githubUrl: 'https://github.com/mirosgithub/suahkim-dev-v2',
     techStack: ['Next.js', 'TypeScript', 'TailwindCSS', 'Vercel'],
     details:
@@ -52,7 +49,6 @@ export const PROJECTS: Project[] = [
       'Python script using OpenCV to extract emojis from PNG sheets, handling inconsistent sizing and alignment through image detection.',
     link: '/projects/emoji-processor',
     id: 'emoji-processor',
-    image: '/emoji-processor-thumbnail.png',
     githubUrl: 'https://github.com/mirosgithub/emoji-processor',
     techStack: ['Python', 'OpenCV'],
     details:
@@ -64,7 +60,6 @@ export const PROJECTS: Project[] = [
       '1st place winner at WDCC x SESA Hackathon. Flask backend with Gemini API integration. Dockerised and deployed on Google Cloud Run.',
     link: '/projects/lullab-ai',
     id: 'lullab-ai',
-    image: '/lullabai.png',
     githubUrl: 'https://github.com/mirosgithub/lullabai',
     demoUrl: 'https://lullab-ai-713855574593.asia-southeast1.run.app/',
     techStack: ['Python', 'Flask', 'GoogleAPIs', 'Docker', 'GoogleCloudRun'],
