@@ -1,14 +1,6 @@
 'use client'
 import { motion } from 'motion/react'
-import { XIcon } from 'lucide-react'
 import { Magnetic } from '@/components/ui/magnetic'
-import {
-  MorphingDialog,
-  MorphingDialogTrigger,
-  MorphingDialogContent,
-  MorphingDialogClose,
-  MorphingDialogContainer,
-} from '@/components/ui/morphing-dialog'
 import Link from 'next/link'
 import { AnimatedBackground } from '@/components/ui/animated-background'
 import {
@@ -35,86 +27,6 @@ const VARIANTS_SECTION = {
 
 const TRANSITION_SECTION = {
   duration: 0.3,
-}
-
-type ProjectMediaProps = {
-  src: string
-  type: 'video' | 'image'
-  alt?: string
-}
-
-const dialogTransition = {
-  type: 'spring' as const,
-  bounce: 0,
-  duration: 0.3,
-}
-
-const closeButtonVariants = {
-  initial: { opacity: 0 },
-  animate: {
-    opacity: 1,
-    transition: { delay: 0.3, duration: 0.1 },
-  },
-  exit: { opacity: 0, transition: { duration: 0 } },
-}
-
-function ProjectMedia({ src, type, alt }: ProjectMediaProps) {
-  const handleVideoError = (e: React.SyntheticEvent<HTMLVideoElement>) => {
-    console.error('Video failed to load:', src)
-    const target = e.target as HTMLVideoElement
-    target.style.display = 'none'
-  }
-
-  return (
-    <MorphingDialog transition={dialogTransition}>
-      <MorphingDialogTrigger>
-        {type === 'video' ? (
-          <video
-            src={src}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="aspect-video w-full cursor-zoom-in rounded-xl bg-zinc-100 dark:bg-zinc-900"
-            onError={handleVideoError}
-          />
-        ) : (
-          <img
-            src={src}
-            alt={alt}
-            className="aspect-video w-full cursor-zoom-in rounded-xl bg-zinc-100 object-cover dark:bg-zinc-900"
-          />
-        )}
-      </MorphingDialogTrigger>
-      <MorphingDialogContainer>
-        <MorphingDialogContent className="relative aspect-video rounded-2xl overflow-hidden">
-          {type === 'video' ? (
-            <video
-              src={src}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="aspect-video h-[50vh] w-full md:h-[70vh] bg-zinc-100 dark:bg-zinc-900"
-              onError={handleVideoError}
-            />
-          ) : (
-            <img
-              src={src}
-              alt={alt}
-              className="aspect-video h-[50vh] w-full object-cover md:h-[70vh] bg-zinc-100 dark:bg-zinc-900"
-            />
-          )}
-        </MorphingDialogContent>
-        <MorphingDialogClose
-          className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1"
-          variants={closeButtonVariants}
-        >
-          <XIcon className="h-5 w-5 text-zinc-500" />
-        </MorphingDialogClose>
-      </MorphingDialogContainer>
-    </MorphingDialog>
-  )
 }
 
 function MagneticSocialLink({
@@ -166,8 +78,7 @@ export default function Personal() {
       >
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
-            Kia ora! I’m Suah, originally from South Korea and now based in Auckland, New Zealand. I enjoy projects that reward curiosity, continued learning and hands-on practice, from software engineering through to painting and fashion design.
-
+            Kia ora! I'm a third-year software engineering student based in Auckland. I'm drawn to projects that reward curiosity and hands-on experimentation, where I can iterate and see immediate results, like building software, painting, and making garments.
           </p>
         </div>
       </motion.section>
@@ -180,13 +91,6 @@ export default function Personal() {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {PROJECTS.map((project) => (
             <div key={project.name} className="space-y-2">
-              {project.video ? (
-                <ProjectMedia src={project.video} type="video" />
-              ) : project.image ? (
-                <ProjectMedia src={project.image} type="image" alt={project.name} />
-              ) : (
-                <ProjectMedia src="/logo.png" type="image" alt={project.name} />
-              )}
               <AnimatedBackground
                 enableHover
                 className="h-full w-full rounded-lg backdrop-blur-xl bg-white/40 dark:bg-gray-900/40 border border-white/50 dark:border-gray-700/50 shadow-2xl"
