@@ -166,8 +166,7 @@ export default function Personal() {
       >
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
-            Kia ora! I’m Suah, originally from South Korea and now based in Auckland, New Zealand. I enjoy projects that reward curiosity, continued learning and hands-on practice, from software engineering through to painting and fashion design.
-
+            Kia ora! I'm a third-year software engineering student based in Auckland. I'm drawn to projects that reward curiosity and hands-on experimentation, where I can iterate and see immediate results, like building software, painting, and making garments.
           </p>
         </div>
       </motion.section>
