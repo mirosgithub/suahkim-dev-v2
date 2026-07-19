@@ -1,7 +1,5 @@
 # suahkim-dev-v2
 
-![Website Deploy](https://deploy-badge.vercel.app/?url=http%3A%2F%2Fsuahkim.dev&style=flat-square&logo=Vercel&name=Vercel)
-
 Personal portfolio website built with [Next.js](https://nextjs.org/), deployed to [Vercel](https://vercel.com).
 
 ## Migration
